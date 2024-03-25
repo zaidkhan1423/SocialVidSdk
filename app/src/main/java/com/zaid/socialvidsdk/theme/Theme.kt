@@ -1,4 +1,4 @@
-package com.zaid.socialvidsdk.ui.theme
+package com.zaid.socialvidsdk.theme
 
 import android.app.Activity
 import android.os.Build

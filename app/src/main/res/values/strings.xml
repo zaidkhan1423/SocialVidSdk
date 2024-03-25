@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SocialVidSdk</string>
+    <string name="not_connected">No internet connection!</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.zaid.socialvidsdk.ui.theme
+package com.zaid.socialvidsdk.theme
 
 import androidx.compose.ui.graphics.Color
 

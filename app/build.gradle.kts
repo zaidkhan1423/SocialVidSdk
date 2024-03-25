@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
+    kotlin("kapt")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -66,4 +68,31 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //Compose navigation
+    val navVersion = "2.7.7"
+    implementation ("androidx.navigation:navigation-compose:$navVersion")
+
+    //Lifecycle aware compose state
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+
+    //Hilt
+    val hiltVersion = "2.47"
+    implementation ("com.google.dagger:hilt-android:2.47")
+    kapt ("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    //Retrofit
+    val retrofitVersion = "2.9.0"
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation ("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
+
+    //Moshi
+    implementation ("com.squareup.moshi:moshi-kotlin:1.14.0")
+
+    //Okhttp
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+}
+
+kapt {
+    correctErrorTypes = true
 }

@@ -1,4 +1,4 @@
-package com.zaid.socialvidsdk.ui.theme
+package com.zaid.socialvidsdk.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
