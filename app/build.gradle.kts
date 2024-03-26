@@ -77,9 +77,10 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
 
     //Hilt
-    val hiltVersion = "2.47"
-    implementation ("com.google.dagger:hilt-android:2.47")
+    val hiltVersion = "2.49"
+    implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt ("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     //Retrofit
     val retrofitVersion = "2.9.0"
@@ -91,6 +92,9 @@ dependencies {
 
     //Okhttp
     implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+
+    //Coil
+    implementation ("io.coil-kt:coil-compose:2.4.0")
 }
 
 kapt {

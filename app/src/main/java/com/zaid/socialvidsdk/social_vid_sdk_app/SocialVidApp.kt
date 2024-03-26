@@ -9,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -77,9 +78,18 @@ fun SocialVidSdkApp(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            AppNavHost(navHostController = appState.navController)
+            AppNavHost(
+                navHostController = appState.navController,
+                onShowSnackBar = { message, action, duration ->
+                    snackBarHostState.showSnackbar(
+                        message = message,
+                        actionLabel = action,
+                        duration = duration,
+                        withDismissAction = duration == SnackbarDuration.Indefinite
+                    ) == SnackbarResult.ActionPerformed
+                }
+            )
         }
-
     }
 }
 

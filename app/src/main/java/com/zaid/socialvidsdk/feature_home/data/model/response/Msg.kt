@@ -1,4 +1,4 @@
-package com.zaid.socialvidsdk.feature_home.model.response
+package com.zaid.socialvidsdk.feature_home.data.model.response
 
 data class Msg(
     val __v: Int,
