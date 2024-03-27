@@ -32,6 +32,7 @@ fun NavGraphBuilder.topLevelGraph(
                 homeUiState = homeScreenUiState,
                 onShowSnackBar = onShowSnackBar,
                 onMessageDisplay = { homeScreenViewModel.onMessageDisplayed() },
+                viewModel = homeScreenViewModel
             )
         }
 

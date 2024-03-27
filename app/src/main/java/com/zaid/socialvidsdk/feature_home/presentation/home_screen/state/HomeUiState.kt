@@ -1,23 +1,25 @@
-package com.zaid.socialvidsdk.feature_home.presentation.home_screen
+package com.zaid.socialvidsdk.feature_home.presentation.home_screen.state
 
-import com.zaid.socialvidsdk.feature_home.data.model.response.AudioPath
-import com.zaid.socialvidsdk.feature_home.data.model.response.Count
-import com.zaid.socialvidsdk.feature_home.data.model.response.Msg
-import com.zaid.socialvidsdk.feature_home.data.model.response.ShowAllVideoResponse
-import com.zaid.socialvidsdk.feature_home.data.model.response.Sound
-import com.zaid.socialvidsdk.feature_home.data.model.response.UserInfo
+import androidx.media3.common.Player
+import com.zaid.socialvidsdk.feature_home.presentation.home_screen.model.AudioPathLocal
+import com.zaid.socialvidsdk.feature_home.presentation.home_screen.model.CountLocal
+import com.zaid.socialvidsdk.feature_home.presentation.home_screen.model.MsgLocal
+import com.zaid.socialvidsdk.feature_home.presentation.home_screen.model.SocialVidResponseLocal
+import com.zaid.socialvidsdk.feature_home.presentation.home_screen.model.SoundLocal
+import com.zaid.socialvidsdk.feature_home.presentation.home_screen.model.UserInfoLocal
 
 data class HomeUiState(
+    val player: Player? = null,
     val loading: Boolean = false,
     val shouldNavigate: Boolean = false,
     val snackBarMessage: String? = null,
-    val showAllVideoResponse: ShowAllVideoResponse = ShowAllVideoResponse(
+    val socialVidResponse: SocialVidResponseLocal = SocialVidResponseLocal(
         code = "", msg = listOf(
-            Msg(
+            MsgLocal(
                 __v = 0,
                 _id = "",
                 city = "",
-                count = Count(
+                count = CountLocal(
                     _id = "",
                     like_count = 0,
                     video_comment_count = 0,
@@ -32,9 +34,9 @@ data class HomeUiState(
                 is_block = 0,
                 liked = 0,
                 score = 0,
-                sound = Sound(
+                sound = SoundLocal(
                     _id = "",
-                    audio_path = AudioPath(
+                    audio_path = AudioPathLocal(
                         acc = "",
                         mp3 = ""
                     ),
@@ -49,7 +51,7 @@ data class HomeUiState(
                 thum = "",
                 tp = 0,
                 uid = "",
-                user_info = UserInfo(
+                user_info = UserInfoLocal(
                     _id = "",
                     fb_id = "",
                     first_name = "",
@@ -63,4 +65,14 @@ data class HomeUiState(
             )
         ), s = ""
     )
-)
+){
+    fun playMediaAt(position: Int) {
+        player?.let { player ->
+            if (player.currentMediaItemIndex == position && player.isPlaying)
+                return
+            player.seekToDefaultPosition(position)
+            player.playWhenReady = true
+            player.prepare()
+        }
+    }
+}
